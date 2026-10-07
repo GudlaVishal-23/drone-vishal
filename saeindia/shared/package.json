@@ -1,0 +1,11 @@
+{
+  "name": "@saeindia/shared",
+  "version": "1.0.0",
+  "description": "Shared types, schemas, and channel configuration for SAE INDIA Drone RC-Bridge",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "type": "module",
+  "dependencies": {
+    "zod": "^3.23.8"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "system": "AETR",
+  "numChannels": 16,
+  "pwmLimits": {
+    "min": 1000,
+    "max": 2000,
+    "center": 1500
+  },
+  "channels": {
+    "1": { "name": "Roll", "role": "ROLL", "min": 1000, "max": 2000, "center": 1500, "default": 1500, "slewRateUsPerSec": 2000 },
+    "2": { "name": "Pitch", "role": "PITCH", "min": 1000, "max": 2000, "center": 1500, "default": 1500, "slewRateUsPerSec": 2000 },
+    "3": { "name": "Throttle", "role": "THROTTLE", "min": 1000, "max": 2000, "center": 1500, "default": 1000, "armedFloor": 1150, "slewRateUsPerSec": 1500 },
+    "4": { "name": "Yaw", "role": "YAW", "min": 1000, "max": 2000, "center": 1500, "default": 1500, "slewRateUsPerSec": 2000 },
+    "5": { "name": "FlightMode", "role": "MODE", "min": 1000, "max": 2000, "center": 1500, "default": 1425 },
+    "6": { "name": "GimbalPitch", "role": "GIMBAL", "min": 1000, "max": 2000, "center": 1500, "default": 1500 },
+    "7": { "name": "ArmSwitch", "role": "ARM", "min": 1000, "max": 2000, "center": 1500, "default": 1000, "disarmedPwm": 1000, "armedPwm": 2000 },
+    "8": { "name": "EmergencyKill", "role": "KILL", "min": 1000, "max": 2000, "center": 1500, "default": 1000, "normalPwm": 1000, "killPwm": 2000 },
+    "9": { "name": "Aux1", "role": "AUX", "min": 1000, "max": 2000, "center": 1500, "default": 1500 },
+    "10": { "name": "Aux2", "role": "AUX", "min": 1000, "max": 2000, "center": 1500, "default": 1500 },
+    "11": { "name": "Aux3", "role": "AUX", "min": 1000, "max": 2000, "center": 1500, "default": 1500 },
+    "12": { "name": "Aux4", "role": "AUX", "min": 1000, "max": 2000, "center": 1500, "default": 1500 },
+    "13": { "name": "Aux5", "role": "AUX", "min": 1000, "max": 2000, "center": 1500, "default": 1500 },
+    "14": { "name": "Aux6", "role": "AUX", "min": 1000, "max": 2000, "center": 1500, "default": 1500 },
+    "15": { "name": "Aux7", "role": "AUX", "min": 1000, "max": 2000, "center": 1500, "default": 1500 },
+    "16": { "name": "Aux8", "role": "AUX", "min": 1000, "max": 2000, "center": 1500, "default": 1500 }
+  },
+  "flightModes": {
+    "STABILIZE": { "pwm": 1165, "minPwm": 0, "maxPwm": 1230, "fltModeIndex": 1 },
+    "ALT_HOLD":  { "pwm": 1295, "minPwm": 1231, "maxPwm": 1360, "fltModeIndex": 2 },
+    "LOITER":    { "pwm": 1425, "minPwm": 1361, "maxPwm": 1490, "fltModeIndex": 3 },
+    "AUTO":      { "pwm": 1555, "minPwm": 1491, "maxPwm": 1620, "fltModeIndex": 4 },
+    "RTL":       { "pwm": 1685, "minPwm": 1621, "maxPwm": 1749, "fltModeIndex": 5 },
+    "LAND":      { "pwm": 1815, "minPwm": 1750, "maxPwm": 2047, "fltModeIndex": 6 }
+  },
+  "failsafe": {
+    "throttle": 975,
+    "mode": 1685,
+    "roll": 1500,
+    "pitch": 1500,
+    "yaw": 1500,
+    "arm": 1000,
+    "kill": 1000
+  },
+  "ardupilotParams": {
+    "RCMAP_ROLL": 1,
+    "RCMAP_PITCH": 2,
+    "RCMAP_THROTTLE": 3,
+    "RCMAP_YAW": 4,
+    "FLTMODE_CH": 5,
+    "RC7_OPTION": 41,
+    "RC8_OPTION": 31,
+    "FS_THR_ENABLE": 1,
+    "FS_THR_VALUE": 975,
+    "FS_GCS_ENABLE": 1,
+    "ARMING_CHECK": 1,
+    "FENCE_ENABLE": 1,
+    "FENCE_ACTION": 1,
+    "BRD_SAFETYENABLE": 0
+  }
+}
