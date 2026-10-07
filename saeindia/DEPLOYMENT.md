@@ -50,49 +50,29 @@ If creating the service manually:
 6. Click **Create Web Service**.
 
 ### 🔎 Verifying Backend Deployment
-Once deployed, Render gives you a domain (e.g., `https://saeindia-relay-server.onrender.com`).
-- Open `https://<YOUR-RENDER-NAME>.onrender.com/health` in your browser.
-- You should see:
-  ```json
-  {
-    "service": "SAE INDIA MAVLink Secure WSS Relay",
-    "status": "ok",
-    "uptime": ...,
-    "connectorOnline": false,
-    "esp32Online": false,
-    "browserClientsCount": 0
-  }
-  ```
-- Your secure WebSocket URL is:
-  `wss://<YOUR-RENDER-NAME>.onrender.com/ws`
+Your live backend on Render:
+- Health check: [https://saeindia-relay-server.onrender.com/health](https://saeindia-relay-server.onrender.com/health)
+- Secure WebSocket endpoint:
+  `wss://saeindia-relay-server.onrender.com/ws`
+- Connector WebSocket endpoint:
+  `wss://saeindia-relay-server.onrender.com/connector`
+- Cloud Command REST API:
+  `https://saeindia-relay-server.onrender.com/api/v1`
 
 ---
 
 ## 2. Frontend Deployment (Netlify)
 
-The frontend is a Vite + React application in the root directory.
+Your live frontend on Netlify:
+- Production GCS Dashboard: [https://dronesae.netlify.app/](https://dronesae.netlify.app/)
+- Google Maps Satellite View: [https://dronesae.netlify.app/googlemaps.html](https://dronesae.netlify.app/googlemaps.html)
 
-### Step-by-Step Setup:
-1. Log in to [Netlify](https://app.netlify.com/).
-2. Click **Add new site** -> **Import an existing project**.
-3. Select GitHub and choose your repository.
-4. Netlify will automatically detect [`netlify.toml`](file:///c:/Antigravityyyyy/Drone/saeindia/netlify.toml). Verify the build settings:
-   - **Base directory**: (leave blank / root)
-   - **Build command**: `npm run build`
-   - **Publish directory**: `dist`
-5. Go to **Site configuration** -> **Environment variables** -> **Add variables**:
-   - `VITE_SECURE_RELAY_URL` = `wss://<YOUR-RENDER-NAME>.onrender.com/ws`
-   - `VITE_RELAY_TOKEN` = `saeindia_sec_99348a7b1c0e`
-6. Click **Deploy site**.
-
-### 🔎 Verifying Frontend Deployment
-1. Visit your Netlify URL (e.g., `https://saeindia-drone.netlify.app/`).
-2. Verify SPA routing by refreshing any page (handled by `dist/_redirects`).
-3. Verify that the standalone location map works by navigating to:
-   `https://saeindia-drone.netlify.app/googlemaps.html`
-4. In the GCS dashboard, open the **Pixhawk / ESP32 Connection Card**:
-   - Select **Secure Cloud Relay (Render)**.
-   - The relay endpoint will display your Render WSS URL.
+### Netlify Environment Variables:
+In your Netlify dashboard (**Site configuration** -> **Environment variables**):
+- `VITE_SECURE_RELAY_URL` = `wss://saeindia-relay-server.onrender.com/ws`
+- `VITE_API_BASE_URL` = `https://saeindia-relay-server.onrender.com`
+- `VITE_RELAY_TOKEN` = `[YOUR_RELAY_AUTH_TOKEN_FROM_RENDER]`
+- `VITE_API_TOKEN` = `[YOUR_RELAY_AUTH_TOKEN_FROM_RENDER]`
    - (Note: You can also update the relay URL on-the-fly directly inside the UI without rebuilding).
 
 ---
@@ -114,8 +94,8 @@ During live flight operations with the actual drone:
    ESP32_PATH=/ws
 
    # Outbound Cloud Relay on Render (No port forwarding needed!)
-   RELAY_URL=wss://<YOUR-RENDER-NAME>.onrender.com/connector
-   RELAY_TOKEN=saeindia_sec_99348a7b1c0e
+   RELAY_URL=wss://saeindia-relay-server.onrender.com/connector
+   RELAY_TOKEN=[YOUR_RELAY_AUTH_TOKEN_FROM_RENDER]
    ```
 4. Run the connector:
    ```bash

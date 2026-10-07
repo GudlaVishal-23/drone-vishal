@@ -31,8 +31,8 @@ export interface Esp32WebSocketOptions {
 }
 
 // Environment defaults
-const ENV_ESP32_WS_URL = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_ESP32_WS_URL) || 'wss://saeindia-szj0.onrender.com/ws';
-const ENV_SECURE_RELAY_URL = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SECURE_RELAY_URL) || 'wss://saeindia-szj0.onrender.com/ws';
+const ENV_ESP32_WS_URL = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_ESP32_WS_URL) || 'wss://saeindia-relay-server.onrender.com/ws';
+const ENV_SECURE_RELAY_URL = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SECURE_RELAY_URL) || 'wss://saeindia-relay-server.onrender.com/ws';
 const ENV_RELAY_TOKEN = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_RELAY_TOKEN) || 'saeindia_sec_99348a7b1c0e';
 const ENV_WIFI_SSID = (typeof import.meta !== 'undefined' && import.meta.env?.VITE_WIFI_SSID) || 'drone123';
 
@@ -41,12 +41,12 @@ function parseWsEndpoint(urlStr: string) {
     const clean = urlStr.trim().replace(/^ws(s)?:\/\//i, 'http$1://');
     const parsed = new URL(clean);
     return {
-      host: parsed.hostname || 'saeindia-szj0.onrender.com',
+      host: parsed.hostname || 'saeindia-relay-server.onrender.com',
       port: parsed.port ? parseInt(parsed.port, 10) : (clean.startsWith('https://') ? 443 : 8080),
       path: parsed.pathname || '/ws'
     };
   } catch (e) {
-    return { host: 'saeindia-szj0.onrender.com', port: 443, path: '/ws' };
+    return { host: 'saeindia-relay-server.onrender.com', port: 443, path: '/ws' };
   }
 }
 
@@ -345,7 +345,7 @@ export class Esp32WebSocketTransport implements MavlinkTransport {
     const formattedPath = this.formatPath(this.path);
 
     if (proto === 'wss') {
-      let ep = (this.secureEndpoint || ENV_SECURE_RELAY_URL || 'wss://saeindia-szj0.onrender.com/ws').trim();
+      let ep = (this.secureEndpoint || ENV_SECURE_RELAY_URL || 'wss://saeindia-relay-server.onrender.com/ws').trim();
       let url = ep.replace(/^ws:\/\//i, 'wss://');
       if (!url.startsWith('wss://')) {
         url = `wss://${url}`;

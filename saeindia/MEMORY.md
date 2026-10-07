@@ -79,7 +79,7 @@ This document serves as the persistent memory for any AI coding agent or enginee
 | Parameter | Default Value | Notes |
 | :--- | :--- | :--- |
 | `VITE_ESP32_WS_URL` | `ws://192.168.31.194:8080/ws` | Local direct LAN WebSocket URL |
-| `VITE_SECURE_RELAY_URL` | `wss://saeindia-groundstation.onrender.com/ws` | Production Render cloud relay |
+| `VITE_SECURE_RELAY_URL` | `wss://saeindia-relay-server.onrender.com/ws` | Production Render cloud relay |
 | `VITE_RELAY_TOKEN` | `saeindia_sec_99348a7b1c0e` | Security token for relay authentication |
 | `SERIAL2_BAUD` | `57` (57600 baud) | Mandatory Pixhawk TELEM2 baud rate |
 | `SERIAL2_PROTOCOL` | `2` (MAVLink2) | Pixhawk MAVLink framing protocol |

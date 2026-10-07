@@ -51,8 +51,8 @@ The system operates under 5 distinct operational roles:
    - Default SoftAP/Wi-Fi: `drone123` / `drone@123`
    - Direct LAN WebSocket: `ws://192.168.31.194:8080/ws`
 3. **Cloud Relay:**
-   - Production URL: `wss://saeindia-groundstation.onrender.com/ws` (or `wss://saeindia-szj0.onrender.com/ws`)
-   - Secret Token: `saeindia_sec_99348a7b1c0e`
+   - Production URL: `wss://saeindia-relay-server.onrender.com/ws`
+   - Secret Token: Configure `RELAY_AUTH_TOKEN` from Render environment
 4. **Android Native USB-OTG:**
    - Native Plugin: `UsbSerialPlugin.java`
    - Interfaces: CDC-ACM, FTDI, CP210x, CH34x at 57600 baud.

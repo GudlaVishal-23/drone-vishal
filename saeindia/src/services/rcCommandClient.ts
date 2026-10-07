@@ -96,7 +96,7 @@ class RcCommandClientService {
   }
 
   private initEndpoints(): void {
-    const envUrl = (typeof import.meta !== 'undefined' && (import.meta.env?.VITE_API_BASE_URL || import.meta.env?.VITE_SECURE_RELAY_URL)) || '';
+    const envUrl = (typeof import.meta !== 'undefined' && (import.meta.env?.VITE_API_BASE_URL || import.meta.env?.VITE_SECURE_RELAY_URL)) || 'https://saeindia-relay-server.onrender.com';
     if (envUrl) {
       this.baseUrl = envUrl.replace(/^wss?:\/\//i, 'https://').replace(/\/ws.*$/, '').replace(/\/+$/, '');
     } else if (typeof window !== 'undefined') {
