@@ -11,7 +11,5 @@ services:
         value: 10000
       - key: RELAY_AUTH_TOKEN
         generateValue: true
-      - key: RELAY_TOKEN
-        fromEnvVar: RELAY_AUTH_TOKEN
       - key: NODE_ENV
         value: production
